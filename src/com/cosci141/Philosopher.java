@@ -33,24 +33,23 @@ public class Philosopher implements Runnable
             while (true) {
 
                 // thinking
-                doAction("--> Thinking");                                   // Philosopher is thinking
-                synchronized (leftFork) {
-                    doAction("--> Picked up left fork");                    // Philosopher picked up left fork
-                    synchronized (rightFork) {
+                doAction("--> Thinking");                                    // Philosopher is thinking
+                synchronized (leftFork) {                                                   // To prevent other threads(philosopher) from getting the same fork
+                    doAction("--> Picked up left fork");                     // Philosopher picked up left fork
+                    synchronized (rightFork) {                                              // To prevent other threads(philosopher) from getting the same fork
                         // eating
-                        doAction("--> Picked up right fork - eating");      // Philosopher picked up left fork
+                        doAction("--> Picked up right fork" +                // Philosopher picked up right fork
+                                " --> starts eating");
 
-                        doAction("--> Put down right fork");
+                        doAction("--> Put down right fork");                 // Philosopher put down right fork
                     }
-
-                    // Back to thinking
-                    doAction("--> Put down left fork. Back to thinking");
+                    doAction("--> Put down left fork and finished eating" +  // Philosopher resume to thinking
+                            "--> Now thinking again");
                 }
             }
-        } catch (InterruptedException e) {
+        } catch (InterruptedException e) {                                                  // in case there is an error, to catch the exception
             Thread.currentThread().interrupt();
             return;
         }
     }
-    //Your code here
 }

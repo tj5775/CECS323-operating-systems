@@ -8,12 +8,12 @@ package com.cosci141; /**
 public class DiningServerImpl implements DiningServer
 {
     @Override
-    public void takeForks(int philNumber) {
+    public void takeForks(int philosopherNumb) {         // to simulate a philosopher take a fork
 
     }
 
     @Override
-    public void returnForks(int philNumber) {
+    public void returnForks(int philosopherNumb) {       // to simulate a philosopher return a fork
 
     }
     //Your code here

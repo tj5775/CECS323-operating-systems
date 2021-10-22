@@ -10,8 +10,8 @@ package com.cosci141;
 public interface DiningServer 
 {  
    // called by a philosopher when they wish to eat 
-   public void takeForks(int philNumber);
+   public void takeForks(int philosopherNumb);
   
    // called by a philosopher when they are finished eating 
-   public void returnForks(int philNumber);
+   public void returnForks(int philosopherNumb);
 }
